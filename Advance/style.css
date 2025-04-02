@@ -1,57 +1,171 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     text-align: center;
-    background-color: #f0f0f0;
+    background-color: #f0f4f8;
     transition: background-image 0.5s ease-in-out;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
 }
 
 .container {
     margin-top: 50px;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-    max-width: 400px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+    max-width: 450px;
     margin-left: auto;
     margin-right: auto;
+    animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 20px;
 }
 
 input {
-    padding: 10px;
-    width: 80%;
-    margin-bottom: 10px;
+    padding: 12px;
+    width: calc(100% - 24px);
+    margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 button {
-    padding: 10px;
-    background-color: blue;
+    padding: 12px 20px;
+    background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background-color: darkblue;
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
-#weatherResult {
+button:active {
+    transform: translateY(0);
+}
+
+#weatherResult, #forecastResult {
     margin-top: 20px;
     font-size: 18px;
     transition: opacity 0.5s ease-in-out;
 }
 
-#forecastResult {
-    transition: opacity 0.5s ease-in-out;
+.weather-card {
+    text-align: left;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.forecast-grid {
+    display: block; /* Display items in a single column */
+    padding: 20px;
 }
 
 .forecast-item {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.8);
+    text-align: left;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.forecast-item p {
+    margin: 8px 0;
+}
+
+label[for="unitSwitch"] {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* Add spacing between label text and checkbox */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+label[for="unitSwitch"]:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+#unitSwitch {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+}
+
+#unitSwitch:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+#unitSwitch:active {
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .forecast-item {
+        font-size: 14px;
+    }
 }

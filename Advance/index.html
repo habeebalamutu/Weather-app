@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <div class="container">
         <h1>Weather App</h1>
         <input type="text" id="cityInput" placeholder="Enter city name">
-        <label for="unitSwitch">Fahrenheit</label>
-        <input type="checkbox" id="unitSwitch">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <button id="unitSwitch">Switch to Fahrenheit</button>
+        </div>
         <button onclick="getWeather()">Get Weather</button>
-        <button onclick="getLocationWeather()">Use My Location</button>
+        <button id="useLocationButton">Use My Location</button>
 
         <div id="weatherResult"></div>
         <div id="forecastResult"></div>

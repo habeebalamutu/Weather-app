@@ -5,12 +5,23 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function getWeather() {
-    const city = document.getElementById("cityInput").value;
+    const city = document.getElementById("cityInput").value.trim();
+
+    if (!city) {
+        alert("Please enter a valid city name.");
+        return;
+    }
+
     const apiKey = "883d7cd4a0a2c85dcf1cfe188825f7ef";  
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     fetch(url)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error: ${response.status} ${response.statusText}`);
+            }
+            return response.json();
+        })
         .then(data => {
             document.getElementById("weatherResult").innerHTML = `
                 <h2>${data.name}</h2>
@@ -18,9 +29,11 @@ function getWeather() {
                 <p>${data.main.temp}°C</p>
             `;
             changeBackground(data.weather[0].main);
-            document.getElementById("weatherResult").style.opacity = 1;
         })
-        .catch(() => alert("City not found"));
+        .catch(error => {
+            console.error("Error fetching weather data:", error);
+            alert("Unable to fetch weather data. Please check your internet connection or try again later.");
+        });
 }
 
 function changeBackground(condition) {

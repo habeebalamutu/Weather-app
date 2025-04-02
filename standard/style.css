@@ -2,7 +2,6 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     background-color: #f0f0f0;
-    transition: background-image 0.5s ease-in-out;
 }
 
 .container {
@@ -40,6 +39,4 @@ button:hover {
 #weatherResult {
     margin-top: 20px;
     font-size: 18px;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
 }
